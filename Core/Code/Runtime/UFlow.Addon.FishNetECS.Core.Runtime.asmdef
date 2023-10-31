@@ -3,7 +3,7 @@
     "rootNamespace": "UFlow.Addon.FishNetECS.Core.Runtime",
     "references": [
         "GUID:bb1ffefc3dfaace4eb1d1ecc2cf4e24a",
-        "GUID:ccd3b44bb855510409effc647e746937",
+        "GUID:f4b25e78f096ead41bab888a001e186b",
         "GUID:7c88a4a7926ee5145ad2dfa06f454c67"
     ],
     "includePlatforms": [],
