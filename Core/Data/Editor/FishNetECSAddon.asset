@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eebd47379ee4475a314743de506620d, type: 3}
   m_Name: FishNetECSAddon
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: FishNetECS
