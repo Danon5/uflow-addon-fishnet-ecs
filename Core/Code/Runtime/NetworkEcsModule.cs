@@ -13,6 +13,7 @@ namespace UFlow.Addon.FishNetECS.Core.Runtime {
 
         public override void LoadDirect() {
             m_ecsModule = EcsModule<T>.Load();
+            m_ecsModule.AutoRunSystemGroups = false;
             m_timeManager = InstanceFinder.TimeManager;
             m_timeManager.OnUpdate += OnUpdate;
             m_timeManager.OnFixedUpdate += OnFixedUpdate;
