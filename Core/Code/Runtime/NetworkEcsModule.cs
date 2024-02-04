@@ -6,14 +6,13 @@ using UnityEngine;
 
 namespace UFlow.Addon.FishNetECS.Core.Runtime {
     public sealed class NetworkEcsModule<T> : BaseModule<NetworkEcsModule<T>> where T : BaseWorldType {
+        private EcsModule<T> m_ecsModule;
         private TimeManager m_timeManager;
-        
-        public World World { get; private set; }
-        
+
+        public World World => m_ecsModule.World;
+
         public override void LoadDirect() {
-            World = EcsUtils.Worlds.CreateWorldFromType<T>();
-            World.SetupSystemGroups();
-            World.SubscribeReset(World.ResetSystemGroups);
+            m_ecsModule = EcsModule<T>.Load();
             m_timeManager = InstanceFinder.TimeManager;
             m_timeManager.OnUpdate += OnUpdate;
             m_timeManager.OnFixedUpdate += OnFixedUpdate;
@@ -34,7 +33,7 @@ namespace UFlow.Addon.FishNetECS.Core.Runtime {
             m_timeManager.OnPostTick -= OnPostTick;
             m_timeManager.OnPrePhysicsSimulation -= OnPrePhysicsSimulation;
             m_timeManager.OnPostPhysicsSimulation -= OnPostPhysicsSimulation;
-            World.Destroy();
+            EcsModule<T>.Unload();
         }
 
         private void OnUpdate() => World.RunSystemGroup<UpdateSystemGroup>(Time.deltaTime);
